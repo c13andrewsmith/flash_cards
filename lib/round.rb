@@ -14,7 +14,7 @@ class Round
     # refactor more DRY?
     def take_turn(guess)
       #create new Turn object
-      turn = new Turn(guess, self.current_card)
+      turn = Turn.new(guess, self.current_card)
       # store in array
       @turns << turn
       # return the turn
@@ -32,11 +32,12 @@ class Round
     end
 
     def percent_correct
-      (self.number_correct / @turns.length) * 100
+      (self.number_correct.to_f / @turns.length.to_f) * 100
     end
 
+    # there MUST be a better way
     def percent_correct_by_category(category)
-      (self.number_correct_by_category(category) / @turns.length) * 100
+      (self.number_correct_by_category(category).to_f / @turns.count{|turn| turn.card.category == category}.to_f) * 100
     end
 
 

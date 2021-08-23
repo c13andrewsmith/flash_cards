@@ -15,7 +15,7 @@ class Turn
     if self.correct?
       "Correct!"
     else
-      "Incorrect"
+      "Incorrect."
     end
   end
 
